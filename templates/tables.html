@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table Browser</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#1C4E80] min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white shadow-2xl rounded-2xl p-8 max-w-xl w-full mt-20">
+        <h1 class="text-2xl font-bold text-center text-[#1C4E80] mb-6">Table Browser</h1>
+        {% if tables and tables|length > 0 %}
+        <ul class="divide-y divide-gray-200">
+            {% for table in tables %}
+            <li class="py-2">
+                <a href="/tables/{{ table }}" class="text-orange-600 hover:underline">{{ table }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-center text-gray-700">No tables found in the database.</p>
+        {% endif %}
+        <div class="flex justify-center mt-6">
+            <a href="/" class="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html> 

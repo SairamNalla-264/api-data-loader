@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Table - {{ table_name }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#1C4E80] min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white shadow-2xl rounded-2xl p-8 max-w-4xl w-full mt-20">
+        <h2 class="text-xl font-bold text-center text-[#1C4E80] mb-4">Table: <span class="text-orange-600">{{ table_name }}</span></h2>
+        <div class="flex justify-between items-center mb-4">
+            <a href="/tables" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">Back to Tables</a>
+            <a href="/tables/{{ table_name }}/export" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Export to CSV</a>
+        </div>
+        <div class="overflow-x-auto mb-4">
+            <table class="min-w-full border border-gray-300">
+                <thead>
+                    <tr>
+                        {% for col in columns %}
+                        <th class="px-2 py-1 border-b border-r text-xs text-gray-700 bg-gray-100">{{ col }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in rows %}
+                    <tr>
+                        {% for cell in row %}
+                        <td class="px-2 py-1 border-b border-r text-xs">{{ cell }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="flex justify-end mt-4">
+            <a href="/tables" class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">Back to Tables</a>
+        </div>
+    </div>
+</body>
+</html> 
